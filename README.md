@@ -34,6 +34,6 @@ DragonNeovim is config neovim with mason dap lsp and lint
         `require('plugins.your_plugins'),
     ```
 ## todo
-- [] add windows installer
-- [] add mac installer
-- [] add formatter
+- [ ] add windows installer
+- [ ] add mac installer
+- [ ] add formatter
