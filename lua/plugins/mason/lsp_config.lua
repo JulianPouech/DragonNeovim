@@ -61,5 +61,8 @@ return {
         }
       end,
     })
+    
+    --add your config here or 
+    -- use require('plugins.lsp_config.enable').load(onAttach,capabilities);
   end
 }
