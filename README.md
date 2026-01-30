@@ -15,6 +15,7 @@ DragonNeovim is config neovim with mason dap lsp and lint
 ## how to install
 > [!NOTE]
 > install npm lastet
+
 `./install.sh`
 ## how to config themes and persist 
 1. `nvim ~/.config/nvim/lua/plugins/themes/your_themes.lua`
