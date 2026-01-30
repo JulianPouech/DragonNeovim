@@ -1,7 +1,6 @@
 require("lazy").setup({
   --theme
 	require('plugins.themes.catppuccin'),
-
   --other plugins
   require('plugins.dashbord'),
 	require('plugins.nvim_tree'),
@@ -12,6 +11,8 @@ require("lazy").setup({
 	require('plugins.dressing'),
   require('plugins.trouble'),
   require('plugins.nvim-notify'),
+  --require('plugins.laravel'),
+  require('plugins.phptools'),
 
   --git implementation
   require('plugins.vim_fugitive'),

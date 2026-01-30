@@ -9,7 +9,7 @@ return {
   config = function()
     local mason_lspconfig = require('mason-lspconfig')
     local cmpNvimLsp = require('cmp_nvim_lsp')
-    local lspconfig = require('lspconfig')
+
 
     mason_lspconfig.setup({
       ensure_installed = { "lua_ls" },
@@ -37,32 +37,20 @@ return {
     local builtin = require('telescope.builtin')
     local opts = { noremap = true, slient = true}
 
-    local onAttach = function (client,bufnr)
-      opts.buffer = bufnr
       keymap.set('n', 'gd', builtin.lsp_definitions ,{ desc = 'LSP: [g]oto [d]efinition '})
       keymap.set('n', 'gr', builtin.lsp_references ,{ desc = 'LSP: [g]oto [r]eferences'})
       keymap.set('n', 'gI', builtin.lsp_implementations, { desc = 'LSP: [g]oto [I]mplementation '})
       keymap.set('n', '<leader>ltd', builtin.lsp_type_definitions, { desc = '[l]SP: [t]ype [d]efinition '})
       keymap.set('n', 'ds', builtin.lsp_document_symbols, { desc = 'LSP: [d]ocument [s]ymbols '})
       keymap.set('n', 'ws', builtin.lsp_dynamic_workspace_symbols, { desc = 'LSP: [w]orkspace [s]ymbols'})
-      keymap.set('n', '<leader>rn', lsp.buf.rename, { desc = 'LSP: [r]e[n]ame '})
+      keymap.set('n', 'rn', lsp.buf.rename, { desc = 'LSP: [r]e[n]ame '})
       keymap.set('n', '<leader>ca', lsp.buf.code_action, { desc = 'LSP: [c]ode [a]ction '})
       keymap.set('n', 'K', lsp.buf.hover, { desc = 'LSP: Hover '})
       keymap.set('n', 'gD', lsp.buf.declaration, { desc = 'LSP: [g]oto [D]eclaration '})
       --keymap.set('n', '<leader>ic', lsp.buf.incoming_calls, { desc = 'LSP: [i]ncoming [c]alls '})
-    end
     local capabilities = cmpNvimLsp.default_capabilities()
-
-    mason_lspconfig.setup_handlers({
-      function (server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {
-          on_attach = onAttach,
-          capabilities = capabilities
-        }
-      end,
-    })
-    
-    --add your config here or 
-    -- use require('plugins.lsp_config.enable').load(onAttach,capabilities);
+    require('plugins.lsp-config.cmake')
+    --require('plugins.lsp-config.volar').setup(onAttach,capabilities);
+    --require('plugins.lsp-config.html').setup(onAttach,capabilities);
   end
 }
