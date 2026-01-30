@@ -13,6 +13,7 @@ return {
   },
   config = function()
     -- Set up nvim-cmp.
+    local ls = require('luasnip')
     local cmp = require('cmp')
     require("luasnip.loaders.from_vscode").lazy_load()
     cmp.setup({  
@@ -26,7 +27,9 @@ return {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
-
+      vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true}),
+      vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true}),
+      vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true}),
       mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
